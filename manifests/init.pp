@@ -45,7 +45,8 @@
 # $chooser_type
 #   Puppet type that sets up a system where users can choose what tag to run.
 #   The hash $chooser_options is passed to the type, as well as the variables
-#   '$default_tag' and '$installed_tags' that specify the available versions
+#   '$install_path', '$default_tag' and '$installed_tags' that specify the
+#   base install path and available versions
 #
 #   multiinstall::chooser::wrapper is an example script that creates a wrapper
 #   script in $install_path/bin
@@ -101,6 +102,7 @@ define multiinstall (
 
   # Configure the chooser
   $chooser_config = {
+    'install_path' => $install_path,
     'install_tags' => $install_tags,
     'default_tag'  => $default_tag,
   }

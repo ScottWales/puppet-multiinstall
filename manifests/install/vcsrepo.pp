@@ -1,4 +1,4 @@
-## \file    manifests/chooser.pp
+## \file    manifests/install/vcsrepo.pp
 #  \author  Scott Wales <scott.wales@unimelb.edu.au>
 #
 #  Copyright 2015 ARC Centre of Excellence for Climate Systems Science
@@ -15,18 +15,21 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-# Install a script to choose between the different installed tags. The options
-# can be used by the template to choose the correct version to use
-define multiinstall::chooser (
-  $install_path,
-  $template,
-  $options,
-  $install_tags,
-  $default_tag,
+# Install from a version controlled repository
+define multiinstall::install::vcsrepo (
+  $tag,
+  $tag_install_path,
+
+  $repository_type,
+  $repository,
 ) {
 
-  file {"${install_path}/bin/${name}":
-    content => template($template),
+  # Check out the local copy
+  vcsrepo {$tag_install_path:
+    ensure   => latest,
+    provider => $repository_type,
+    source   => $repository,
+    revision => $tag,
   }
 
 }

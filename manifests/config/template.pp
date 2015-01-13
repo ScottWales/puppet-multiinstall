@@ -1,4 +1,4 @@
-## \file    manifests/template_config.pp
+## \file    manifests/config/template.pp
 #  \author  Scott Wales <scott.wales@unimelb.edu.au>
 #
 #  Copyright 2015 ARC Centre of Excellence for Climate Systems Science
@@ -16,7 +16,7 @@
 #  limitations under the License.
 
 # Sample type that configures an installed tag using a template
-define multiinstall::template_config (
+define multiinstall::config::template (
   $tag,
   $tag_install_path,
 

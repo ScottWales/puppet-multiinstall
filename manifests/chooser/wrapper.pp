@@ -1,4 +1,4 @@
-## \file    manifests/vcsrepo_install.pp
+## \file    manifests/chooser/wrapper.pp
 #  \author  Scott Wales <scott.wales@unimelb.edu.au>
 #
 #  Copyright 2015 ARC Centre of Excellence for Climate Systems Science
@@ -15,21 +15,19 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-# Install from a version controlled repository
-define multiinstall::vcsrepo_install (
-  $tag,
-  $tag_install_path,
+# Install a script to choose between the different installed tags. The options
+# can be used by the template to choose the correct version to use
+define multiinstall::chooser (
+  $install_path,
+  $install_tags,
+  $default_tag,
 
-  $repository_type,
-  $repository,
+  $template = 'multiinstall/wrapper.erb',
+  $options  = {},
 ) {
 
-  # Check out the local copy
-  vcsrepo {$tag_install_path:
-    ensure   => latest,
-    provider => $repository_type,
-    source   => $repository,
-    revision => $tag,
+  file {"${install_path}/bin/${name}":
+    content => template($template),
   }
 
 }
