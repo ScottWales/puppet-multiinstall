@@ -93,7 +93,7 @@ define multiinstall (
   }
 
   # Install the required tags under $install_path
-  multitaginstall::install {$install_tags:
+  multiinstall::install {$install_tags:
     install_path    => $install_path,
     install_options => $install_options,
     config_type     => $config_type,
