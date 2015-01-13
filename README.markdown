@@ -1,60 +1,53 @@
-#### Table of Contents
+MultiInstall
+============
 
-1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with multitaginstall](#setup)
-    * [What multitaginstall affects](#what-multitaginstall-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with multitaginstall](#beginning-with-multitaginstall)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+Installs multiple versions of a program or library simultaneously
 
-## Overview
+In multi-user environments you sometimes want to support multiple versions of a
+software package at the same time, so that for instance you can gradually
+migrate users between versions. In HPC environments the 'Module' system is
+commonly used for this.
 
-Install multiple versions of a repository that users can choose between
+MultiInstall is a highly configurable Puppet module for installing and
+configuring multiple versions of a package on a single server.
 
-## Module Description
+Using MultiInstall
+------------------
 
-If applicable, this section should have a brief description of the technology the module integrates with and what that integration enables. This section should answer the questions: "What does this module *do*?" and "Why would I use it?"
+The `multiinstall` Puppet type takes a list of tags signifying the package
+versions to install, as well as the names of three Puppet types. These are the
+'installer', the 'configurer' and the 'chooser' types. These in turn install a
+single tag, configure that tag and provide a mechanism for users to choose
+which of the tags to run.
 
-If your module has a range of functionality (installation, configuration, management, etc.) this is the time to mention it.
+There are a set of example types in the manifest directory that show how this works.
 
-## Setup
+ * The type `multiinstall::install::vcsrepo` downloads tags from a
+   version-controlled repository using the `puppetlabs-vcsrepo` module
 
-### What multitaginstall affects
+ * The type `multiinstall::configure::template` configures a package using a
+   Puppet template file
 
-* A list of files, packages, services, or operations that the module will alter, impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form. 
+ * The type `multiinstall::chooser::wrapper` sets up a wrapper which selects
+   the version to run using an environment variable
 
-### Setup Requirements **OPTIONAL**
+To expand the options you can pass in your own custom types to `multiinstall`.
+For instance you might create an installer that installs different Python
+library versions using Pip, and a chooser that creates module files for each
+version. Pull requests are welcomed to add new helper types
 
-If your module requires anything extra before setting up (pluginsync enabled, etc.), mention it here. 
+Other notes
+-----------
 
-### Beginning with multitaginstall
+Each of the helper types can be passed options by using the hashes in the main
+`multiinstall` type, eg.
 
-The very basic steps needed for a user to get the module up and running. 
+    multiinstall {'cylc':
+        install_version => 'master',
+        install_type    => 'multiinstall::install::vcsrepo',
+        install_options => {
+            repository  => 'https://github.com/cylc/cylc',
+        },
+    }
 
-If your most recent release breaks compatibility or requires particular steps for upgrading, you may wish to include an additional section here: Upgrading (For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
-
-## Usage
-
-Put the classes, types, and resources for customizing, configuring, and doing the fancy stuff with your module here. 
-
-## Reference
-
-Here, list the classes, types, providers, facts, etc contained in your module. This section should include all of the under-the-hood workings of your module so people know what the module is touching on their system but don't need to mess with things. (We are working on automating this section!)
-
-## Limitations
-
-This is where you list OS compatibility, version compatibility, etc.
-
-## Development
-
-Since your module is awesome, other users will want to play with it. Let them know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You may also add any additional sections you feel are necessary or important to include here. Please use the `## ` header. 
+Obsolete versions can be purged by setting the `purge` option to true
