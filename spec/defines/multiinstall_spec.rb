@@ -6,6 +6,8 @@ describe 'multiinstall', :type => :define do
     let (:params) {
     }
 
-    it 'should resolve with no errors' do
+    context 'with defaults' do
+        it { should contain_file('/opt/test') }
+        it { should contain_file('/opt/test/bin/test') }
     end
 end
