@@ -17,7 +17,7 @@ describe 'multiinstall' do
         }}
 
         it { should compile }
-        it { should contain_multiinstall__install('/opt/test/1') }
+        it { should contain_multiinstall__install('test|1') }
     end
 
     context 'with multiple tags defined' do
@@ -27,8 +27,8 @@ describe 'multiinstall' do
         }}
 
         it { should compile }
-        it { should contain_multiinstall__install('/opt/test/1') }
-        it { should contain_multiinstall__install('/opt/test/abc') }
+        it { should contain_multiinstall__install('test|1') }
+        it { should contain_multiinstall__install('test|abc') }
     end
 
 end

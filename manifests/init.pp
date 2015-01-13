@@ -93,8 +93,11 @@ define multiinstall (
     force  => true,
   }
 
+  # Put the tags in a namespace
+  $namespaced_tags = prefix($install_tags,"${name}|")
+
   # Install the required tags under $install_path
-  multiinstall::install {$install_tags:
+  multiinstall::install {$namespaced_tags:
     install_path    => $install_path,
     install_type    => $install_type,
     install_options => $install_options,
