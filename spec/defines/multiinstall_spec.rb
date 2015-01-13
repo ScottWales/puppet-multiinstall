@@ -12,6 +12,7 @@ describe 'multiinstall' do
 
     context 'with a tag defined' do
         let (:params) {{
+            :install_type => 'multiinstall::install::mock',
             :install_tags => '1'
         }}
 
@@ -21,6 +22,7 @@ describe 'multiinstall' do
 
     context 'with multiple tags defined' do
         let (:params) {{
+            :install_type => 'multiinstall::install::mock',
             :install_tags => ['1','abc']
         }}
 
