@@ -26,7 +26,7 @@ define multiinstall::install (
   $config_options,
 ) {
 
-  $name_array = split($name, '|')
+  $name_array = split($name, ':')
   $tag = $name_array[1]
   $tag_install_path = "${install_path}/${tag}"
 
