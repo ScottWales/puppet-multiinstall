@@ -1,10 +1,7 @@
 require 'spec_helper'
 
-describe 'multiinstall', :type => :define do
-    let (:facts) {{ :osfamily => 'RedHat' }}
+describe 'multiinstall' do
     let (:title) { 'test' }
-    let (:params) {
-    }
 
     context 'with defaults' do
         it { should compile }
