@@ -1,0 +1,16 @@
+#!Module1.0
+
+set prefix "<%= @install_path %>/<%= @tag %>"
+
+if [ file exists $prefix/bin ] {
+    prepend-path PATH $prefix/bin
+}
+
+if [ file exists $prefix/lib ] {
+    prepend-path LIBRARY_PATH $prefix/lib
+    prepend-path LD_LIBRARY_PATH $prefix/lib
+}
+
+if [ file exists $prefix/include ] {
+    prepend-path CPATH $prefix/include
+}
