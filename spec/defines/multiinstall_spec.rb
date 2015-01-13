@@ -9,4 +9,24 @@ describe 'multiinstall' do
         it { should contain_file('/opt/test') }
         it { should contain_file('/opt/test/bin/test') }
     end
+
+    context 'with a tag defined' do
+        let (:params) {{
+            :install_tags => '1'
+        }}
+
+        it { should compile }
+        it { should contain_multiinstall__install('/opt/test/1') }
+    end
+
+    context 'with multiple tags defined' do
+        let (:params) {{
+            :install_tags => ['1','abc']
+        }}
+
+        it { should compile }
+        it { should contain_multiinstall__install('/opt/test/1') }
+        it { should contain_multiinstall__install('/opt/test/abc') }
+    end
+
 end
