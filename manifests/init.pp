@@ -80,10 +80,11 @@ define multiinstall (
   validate_bool($purge)
 
   # Check if default is actually installed
-  if !(($default_tag) and
-      ($default_tag == $install_tags) or
-      ($default_tag in $install_tags)) {
-    warning("Default tag ${default_tag} is not being installed")
+  if ($default_tag) {
+    if (($default_tag != $install_tags) and
+        !($default_tag in $install_tags)) {
+      warning("Default tag ${default_tag} is not being installed")
+    }
   }
 
   file {$install_path:
