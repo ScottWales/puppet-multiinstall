@@ -7,6 +7,8 @@ describe 'multiinstall', :type => :define do
     }
 
     context 'with defaults' do
+        it { should compile }
+        it { should contain_multiinstall('test') }
         it { should contain_file('/opt/test') }
         it { should contain_file('/opt/test/bin/test') }
     end
