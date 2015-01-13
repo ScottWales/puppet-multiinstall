@@ -11,6 +11,8 @@ commonly used for this.
 MultiInstall is a highly configurable Puppet module for installing and
 configuring multiple versions of a package on a single server.
 
+[![Build Status](https://travis-ci.org/ScottWales/puppet-multiinstall.svg?branch=master)](https://travis-ci.org/ScottWales/puppet-multiinstall)
+
 Using MultiInstall
 ------------------
 
