@@ -17,7 +17,7 @@
 
 # Sample type that configures an installed tag using a template
 define multiinstall::config::template (
-  $tag,
+  $tag_name,
   $tag_install_path,
 
   $config_path,

@@ -28,7 +28,7 @@
 #
 # $install_type
 #   Puppet type that handles installing a single tag. The hash $install_options
-#   is passed to the type, as well as the variables '$tag' and
+#   is passed to the type, as well as the variables '$tag_name' and
 #   '$tag_install_path' that specify the version and install path to use
 #
 #   multiinstall::install::vcsrepo is an example type that installs from a
@@ -36,7 +36,7 @@
 #
 # $config_type (optional)
 #   Puppet type that handles configuring a single installed tag. The hash
-#   $config_options is passed to the type, as well as the variables '$tag' and
+#   $config_options is passed to the type, as well as the variables '$tag_name' and
 #   '$tag_install_path' that specify the version and install path to use
 #
 #   multiinstall::config::template is an example type that creates a config

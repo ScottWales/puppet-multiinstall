@@ -35,7 +35,7 @@ define multiinstall::install (
   }
 
   $tag_config = {
-    'tag'              => $tag,
+    'tag_name'         => $tag,
     'tag_install_path' => $tag_install_path,
   }
 

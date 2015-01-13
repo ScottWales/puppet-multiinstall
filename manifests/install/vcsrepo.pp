@@ -17,7 +17,7 @@
 
 # Install from a version controlled repository
 define multiinstall::install::vcsrepo (
-  $tag,
+  $tag_name,
   $tag_install_path,
 
   $repository_type,
