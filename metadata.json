@@ -1,0 +1,16 @@
+{
+  "name": "saw-multiinstall",
+  "version": "0.1.0",
+  "author": "saw",
+  "summary": "Install multiple versions of a program to a directory",
+  "license": "Apache 2.0",
+  "source": "https://github.com/ScottWales/puppet-multiinstall",
+  "project_page": "https://github.com/ScottWales/puppet-multiinstall",
+  "issues_url": "https://github.com/ScottWales/puppet-multiinstall/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
+  ]
+}
