@@ -19,11 +19,11 @@
 define multiinstall::install (
   $install_path,
 
-  $install_type,
-  $install_options,
+  $install_type    = undef,
+  $install_options = {},
 
-  $config_type,
-  $config_options,
+  $config_type     = undef,
+  $config_options  = {},
 ) {
 
   $name_array = split($name, ':')
