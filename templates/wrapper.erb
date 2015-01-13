@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+# Wrapper to choose between the different installed versions of <%= @name %>
+set -eu
+
+NAME=$(basename $0)
+INSTALL_PATH=<%= @install_path %>
+DEFAULT=<%= @default_tag %>
+
+# Check for version to use
+VERSION=${<%= @name.capitalize %>_VERSION:-$DEFAULT}
+
+if [ -x $INSTALL_PATH/$VERSION/bin/$NAME ]; then
+    $INSTALL_PATH/$VERSION/bin/$NAME "$@"
+else
+    echo "ERROR: Could not find $NAME in $INSTALL_PATH/$VERSION" 1>&2
+    echo '       Try checking the value of $<%= @name.capitalize %>_VERSION' 1>&2
+    exit 1
+fi
