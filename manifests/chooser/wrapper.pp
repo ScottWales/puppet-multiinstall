@@ -17,7 +17,10 @@
 
 # Install a script to choose between the different installed tags. The options
 # can be used by the template to choose the correct version to use
-define multiinstall::chooser (
+#
+# `$options` can be used to pass custom options to the template
+
+define multiinstall::chooser::wrapper (
   $install_path,
   $install_tags,
   $default_tag,
