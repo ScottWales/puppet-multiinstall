@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "author": "saw",
   "summary": "Install multiple versions of a program to a directory",
-  "tags": "modulefile"
+  "tags": ["modulefile"],
   "license": "Apache-2.0",
   "source": "https://github.com/ScottWales/puppet-multiinstall",
   "project_page": "https://github.com/ScottWales/puppet-multiinstall",
