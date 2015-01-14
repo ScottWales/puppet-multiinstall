@@ -1,6 +1,6 @@
 {
   "name": "saw-multiinstall",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "saw",
   "summary": "Install multiple versions of a program to a directory",
   "tags": ["modulefile"],
@@ -8,6 +8,12 @@
   "source": "https://github.com/ScottWales/puppet-multiinstall",
   "project_page": "https://github.com/ScottWales/puppet-multiinstall",
   "issues_url": "https://github.com/ScottWales/puppet-multiinstall/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem":"RedHat",
+      "operatingsystemrelease": ["6.0"]
+    }
+  ],
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
